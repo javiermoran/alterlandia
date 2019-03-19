@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="m1"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Artistas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar 
+    class="ion-margin-top"
+    placeholder="Buscar"
+    (ionChange)="onSearchChange($event)"
+    ></ion-searchbar>
+  <ion-list *ngIf="artists">
+    <ion-item 
+      [routerLink]="['/tabs', 'artist', artist.id]"
+      *ngFor="let artist of filteredArtists"
+      >
+      <ion-avatar slot="start">
+        <img [src]="artist.pictureUrl">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ artist.name }}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
